@@ -1,10 +1,13 @@
 import React from 'react';
 import './Controls.css';
 
-const Controls = () => {
+const Controls = ({onScreenToggle}) => {
+    const show =()=>{
+
+    }
     return (
         <div className='maincontrols'>
-            <button className='menu-button button'>MENU</button>
+            <button onClick={onScreenToggle} className='menu-button button'>MENU</button>
             <p>
             <button className='back-button button'>
             <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/cccccc/rewind.png" alt="rewind"/>
