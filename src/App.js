@@ -10,9 +10,10 @@ class App extends React.Component {
   }
   render(){
   return (
-    <div className="App">
+    <div className="App mirrored-div">
       <Screen />
       <Controls />
+
     </div>
   );
   }
