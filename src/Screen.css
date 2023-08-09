@@ -1,5 +1,5 @@
 .main{
-    height: 33vh;
+    height: 245px;
     border: 4px solid black;
     border-radius: 10px;
     background: url('https://images.unsplash.com/photo-1690983178068-eb0ac76ef0b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2211&q=80');
@@ -50,9 +50,9 @@
 
 .full{
     width: 100%;
-    height: 33vh;;
+    height: 245px;
     margin-top: 0;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: center;
     background: url('https://images.unsplash.com/photo-1690983178068-eb0ac76ef0b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2211&q=80');
     background-position: center; 
@@ -75,7 +75,8 @@
 }
 .full-func{
     background-color: whitesmoke;
-    height: 100%;
+    height: 245px;
+    border-radius: 7px;
 }
 #music{
     height: 70%;
@@ -90,7 +91,7 @@
     margin-top: 20%;
     margin-right: 70px;
     font-weight:600;
-    font-size: 1.3rem;
+    font-size: 18px;
 }
 #music-time{
     width: 80%;
