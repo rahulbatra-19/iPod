@@ -30,7 +30,7 @@ class App extends React.Component {
       onscreen: '',
       screenfull : false
     }
-    const screenmain='';
+    var screenmain="";
   }
   handleColor =()=>{
     let div = document.getElementById('CoverFlow');
@@ -122,13 +122,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { menuItems, isLeftVisible, onscreen, screenfull } = this.state;
+    const { menuItems, isLeftVisible, onscreen } = this.state;
     return (
       <div className="App">
         <Screen menuItems={menuItems} 
         isLeftVisible={isLeftVisible} 
         onscreen ={onscreen} 
-        screenfull={screenfull}/>
+        />
         <Controls
           onScreenToggle={this.handleScreenToggle}
           onControlClick={this.handleControlClick}

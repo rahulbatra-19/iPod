@@ -28,8 +28,6 @@ class Screen extends React.Component {
     render() {
         const { menuItems} = this.props;
         const {isLeftVisible, onscreen } = this.state;
-
-
         return (
         <div className='main'>
                 {isLeftVisible ? (
@@ -39,7 +37,7 @@ class Screen extends React.Component {
                         {menuItems.map(item => (
                             <li key={item.id} id={item.title}  >   
                                 <span className='text'>{item.title}</span>
-                                <span className='symbol' >></span>
+                                <span className='symbol'>></span>
                             </li>
                         ))}
                     </ul>
@@ -51,7 +49,16 @@ class Screen extends React.Component {
                             </div>}
                             {onscreen==='Music' &&
                             <div className='full-func' >
-                                <span>Music</span>
+                                <p id="music">
+                                    <img src="https://images.genius.com/cbad795cdb3843247073fac8af76b117.1000x1000x1.png"></img>
+                                    <span>Sicko Mode <br></br>
+                                        Travis Scott</span>
+                                </p>
+                                <div id="music-timeline">
+                                0
+                                <div id="music-time"></div>  
+                                4:00   
+                                </div>
                             </div>   
                             }
                             {onscreen==='Games' &&
