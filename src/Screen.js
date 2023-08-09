@@ -1,23 +1,27 @@
 import React from 'react';
 import './Screen.css';
-// import ZingTouch from 'zingtouch';
+
 
 class Screen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            // variable for left menu is visible
             isLeftVisible: props.isLeftVisible,
+            // variable if any item is selected
             onscreen :props.onscreen
         };
     }
     componentDidUpdate(prevProps) {
-        // Check if the isLeftVisible prop has changed
+        // Check if the onscreen prop is  changed 
         if(prevProps.onscreen !== this.props.onscreen){
             this.setState({
                 isLeftVisible: !this.state.isLeftVisible,
                 onscreen : this.props.onscreen
             });
         }
+        // Check if the isLeftVisible prop has changed
+
         if (prevProps.isLeftVisible !== this.props.isLeftVisible) {
             this.setState({
                 isLeftVisible: !this.state.isLeftVisible,
@@ -29,8 +33,10 @@ class Screen extends React.Component {
         const { menuItems} = this.props;
         const {isLeftVisible, onscreen } = this.state;
         return (
+            // this is the main screen div
         <div className='main'>
                 {isLeftVisible ? (
+                    // this is for left side of the screen to show the items of component 
                 <div className="left">
                     <p>iPod.js</p>
                     <ul>
@@ -42,11 +48,15 @@ class Screen extends React.Component {
                         ))}
                     </ul>
                 </div>) :
-                    (   <div className='full'>
+                    (  
+                        // this is if the component is selected
+                         <div className='full'>
+                            {/* if CoverFlow is selected */}
                             {onscreen==='CoverFlow' && 
                             <div className='full-func'>
                                 <span>CoverFlow</span>
                             </div>}
+                            {/* if Music is selected */}
                             {onscreen==='Music' &&
                             <div className='full-func' >
                                 <p id="music">
@@ -61,12 +71,15 @@ class Screen extends React.Component {
                                 </div>
                             </div>   
                             }
+                            {/* if Games item  is selected */}
+
                             {onscreen==='Games' &&
                             <div className='full-func'>
                                 <img src="https://toppng.com/uploads/preview/dice-115628871397usecbjyyw.png" alt="games"></img>
                                 <p>Games</p>
                             </div>  
                             }
+                            {/* if Setting item is selected */}
                             {onscreen==='Settings' &&
                             <div className='full-func'>
                                 <img src="https://e7.pngegg.com/pngimages/516/751/png-clipart-computer-icons-setting-windows-настройки.png" alt="Settings"></img>

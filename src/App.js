@@ -28,10 +28,10 @@ class App extends React.Component {
       ],
       isLeftVisible: false,
       onscreen: '',
-      screenfull : false
     }
     var screenmain="";
   }
+  // this is to handing the color of items 
   handleColor =()=>{
     let div = document.getElementById('CoverFlow');
     if(div){
@@ -55,13 +55,17 @@ class App extends React.Component {
       div.style.color="black";
     }
 }
+// this is a function of Selecting the menu items
   handleControlClick = () => {
     let angle = 0;
+    // this is to select the target element and using Zing touch on it for selecting the component
     const target = document.getElementById('menu');
     const region = new ZingTouch.Region(target);
+    // binding target to the rotate
     region.bind(target, 'rotate', (e) => {
 
       angle = angle + e.detail.distanceFromLast;
+      // this is for hovering over items and focus goes on items and changing color of background 
       if ((Math.abs(angle) > 0 && Math.abs(angle) < 20)) {
         this.handleColor();
         let curEle = document.getElementById('CoverFlow');
@@ -108,16 +112,16 @@ class App extends React.Component {
       }
     })
   }
-
+  // this is the function for the menu button to show the menu of the component on screen
   handleScreenToggle = () => {
     this.setState((prevState) => ({
       isLeftVisible: !prevState.isLeftVisible,
     }));
   }
+  // this is the function for the main middle button to select the screen component
   handleSelectedItem = () =>{
     this.setState({
       onscreen : this.screenmain,
-      screenfull : true
     })
   }
 
@@ -125,10 +129,12 @@ class App extends React.Component {
     const { menuItems, isLeftVisible, onscreen } = this.state;
     return (
       <div className="App">
+        {/* this is the Screen part of the Ipod */}
         <Screen menuItems={menuItems} 
         isLeftVisible={isLeftVisible} 
         onscreen ={onscreen} 
         />
+        {/* this the controller part of the Ipod */}
         <Controls
           onScreenToggle={this.handleScreenToggle}
           onControlClick={this.handleControlClick}
