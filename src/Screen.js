@@ -6,63 +6,34 @@ class Screen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            screen: true,
-            img: '',
             isLeftVisible: props.isLeftVisible,
-            mainscreen : props.screenmain
+            onscreen :props.onscreen
         };
-    }
-   
-
-    change = (title) => {
-        this.setState({
-            isLeftVisible: !this.state.isLeftVisible
-        });
-        console.log(title)
-        var img = '';
-        if (title === 'CoverFlow') {
-            this.setState({
-                screen: false,
-                img : '',
-                title: 'CoverFlow'
-            });
-        } else if (title === 'Music') {
-            this.setState({
-                screen: false,
-                img : '',
-                title: 'Music'
-            });
-        } else if (title === 'Games') {
-            this.setState({
-                screen: false,
-                img: "https://toppng.com/uploads/preview/dice-115628871397usecbjyyw.png",
-                title: 'Games'
-            });
-        } else if (title === 'Settings') {
-            this.setState({
-                screen: false,
-                img: "https://e7.pngegg.com/pngimages/516/751/png-clipart-computer-icons-setting-windows-настройки.png",
-                title: 'Settings'
-            });
-        }
     }
     componentDidUpdate(prevProps) {
         // Check if the isLeftVisible prop has changed
+        if(prevProps.onscreen !== this.props.onscreen){
+            this.setState({
+                isLeftVisible: !this.state.isLeftVisible,
+                onscreen : this.props.onscreen
+            });
+        }
         if (prevProps.isLeftVisible !== this.props.isLeftVisible) {
             this.setState({
                 isLeftVisible: !this.state.isLeftVisible,
-                screen: true
+                onscreen : ''
             })
         }
     }
     render() {
-        const { menuItems, } = this.props;
-        const { title, screen, img, isLeftVisible } = this.state;
+        const { menuItems} = this.props;
+        const {isLeftVisible, onscreen } = this.state;
+
 
         return (
-            <div className='main'>
-                {isLeftVisible ? (<div className="left" style={isLeftVisible ? { display: 'block' } : { display: 'none' }}>
+        <div className='main'>
+                {isLeftVisible ? (
+                <div className="left">
                     <p>iPod.js</p>
                     <ul>
                         {menuItems.map(item => (
@@ -72,24 +43,37 @@ class Screen extends React.Component {
                             </li>
                         ))}
                     </ul>
-                </div>) : !screen ?
-                    (
-                        <div className='full'>
-                            {img ==='' ? (<span>{title}</span>)
-                                : (<><img src={img} alt={title}></img><p>{title}</p></>)
-
+                </div>) :
+                    (   <div className='full'>
+                            {onscreen==='CoverFlow' && 
+                            <div className='full-func'>
+                                <span>CoverFlow</span>
+                            </div>}
+                            {onscreen==='Music' &&
+                            <div className='full-func' >
+                                <span>Music</span>
+                            </div>   
+                            }
+                            {onscreen==='Games' &&
+                            <div className='full-func'>
+                                <img src="https://toppng.com/uploads/preview/dice-115628871397usecbjyyw.png" alt="games"></img>
+                                <p>Games</p>
+                            </div>  
+                            }
+                            {onscreen==='Settings' &&
+                            <div className='full-func'>
+                                <img src="https://e7.pngegg.com/pngimages/516/751/png-clipart-computer-icons-setting-windows-настройки.png" alt="Settings"></img>
+                                <p>Settings</p>
+                            </div>  
                             }
                         </div>
-                    ) : (<></>)
-
+                    ) 
                 }
             </div>
+            
         )
     }
 
 }
 
 export default Screen;
-
-
-//onClick={() => this.change(item.title)}

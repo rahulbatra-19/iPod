@@ -27,22 +27,33 @@ class App extends React.Component {
         }
       ],
       isLeftVisible: false,
-      screenmain: ''
+      onscreen: '',
+      screenfull : false
     }
+    const screenmain='';
   }
   handleColor =()=>{
     let div = document.getElementById('CoverFlow');
-    div.style.backgroundColor='whitesmoke';
-    div.style.color="black";
+    if(div){
+      div.style.backgroundColor='whitesmoke';
+      div.style.color="black";
+    }
+   
     div = document.getElementById('Music');
-    div.style.backgroundColor='whitesmoke';
-    div.style.color="black";
+    if(div){
+      div.style.backgroundColor='whitesmoke';
+      div.style.color="black";
+    }
     div = document.getElementById('Games');
-    div.style.backgroundColor='whitesmoke';
-    div.style.color="black";
+    if(div){
+      div.style.backgroundColor='whitesmoke';
+      div.style.color="black";
+    }
     div = document.getElementById('Settings');
-    div.style.backgroundColor='whitesmoke';
-    div.style.color="black";
+    if(div){
+      div.style.backgroundColor='whitesmoke';
+      div.style.color="black";
+    }
 }
   handleControlClick = () => {
     let angle = 0;
@@ -58,6 +69,8 @@ class App extends React.Component {
         curEle.style.backgroundColor = '#0099FF';
         curEle.style.color = "white";
         }
+          this.screenmain= "CoverFlow";
+
       }
       if (Math.abs(angle) > 15 && Math.abs(angle) < 35) {
         this.handleColor();
@@ -66,6 +79,8 @@ class App extends React.Component {
           curEle.style.backgroundColor = '#0099FF';
           curEle.style.color = "white";
           }
+          this.screenmain=  "Music";
+
       }
       if (Math.abs(angle) > 30 && Math.abs(angle) < 50) {
         this.handleColor();
@@ -75,6 +90,7 @@ class App extends React.Component {
           curEle.style.backgroundColor = '#0099FF';
           curEle.style.color = "white";
           }
+          this.screenmain= "Games";
       }
       if (Math.abs(angle) >= 45 && Math.abs(angle) < 65) {
         this.handleColor();
@@ -84,6 +100,7 @@ class App extends React.Component {
           curEle.style.backgroundColor = '#0099FF';
           curEle.style.color = "white";
           }
+          this.screenmain="Settings";
       }
 
       if (Math.abs(angle) > 65) {
@@ -98,14 +115,20 @@ class App extends React.Component {
     }));
   }
   handleSelectedItem = () =>{
-
+    this.setState({
+      onscreen : this.screenmain,
+      screenfull : true
+    })
   }
 
   render() {
-    const { menuItems, isLeftVisible, screenmain } = this.state;
+    const { menuItems, isLeftVisible, onscreen, screenfull } = this.state;
     return (
       <div className="App">
-        <Screen menuItems={menuItems} isLeftVisible={isLeftVisible} screenmain={screenmain} />
+        <Screen menuItems={menuItems} 
+        isLeftVisible={isLeftVisible} 
+        onscreen ={onscreen} 
+        screenfull={screenfull}/>
         <Controls
           onScreenToggle={this.handleScreenToggle}
           onControlClick={this.handleControlClick}
