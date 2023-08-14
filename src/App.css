@@ -6,6 +6,8 @@
   padding: 10px;
   padding-top: 2%;
   border-radius: 40px;
+  -webkit-box-reflect: below 3px -webkit-gradient(linear, right top, right bottom, from(transparent), to(hsla(0, 0%, 100%, .4)));
+
 }
 /* 
 
@@ -38,3 +40,5 @@
     transform: rotate(360deg);
   }
 } */
+
+
